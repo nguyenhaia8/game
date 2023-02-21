@@ -1,0 +1,27 @@
+{
+ 
+  "extends": [
+      "next/core-web-vitals",
+      "plugin:prettier/recommended"
+  ],
+
+  "rules": {
+      "prettier/prettier": [
+          "warn",
+          {
+            "trailingComma": "es5",
+            "tabWidth": 2,
+            "semi": false,
+            "singleQuote": true
+          }
+        ],
+        "react/jsx-key": "error",
+        "no-duplicate-imports": "error",
+        "no-unused-vars": "error",
+        // "@typescript-eslint/no-explicit-any": "warn"
+        "import/order": [
+          "error",
+          {"groups": ["builtin", "external", "internal", "parent", "sibling", "index"]}
+        ]
+  }
+}
