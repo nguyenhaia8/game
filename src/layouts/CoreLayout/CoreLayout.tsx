@@ -1,15 +1,17 @@
-import { Box, Flex, BoxProps, Button } from '@chakra-ui/react'
+import { Box, Flex, BoxProps, Button, useColorMode } from '@chakra-ui/react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect } from 'react'
 
 export const CoreLayout = (props: BoxProps) => {
   const { children } = props
+  const { colorMode, toggleColorMode } = useColorMode()
 
   useEffect(() => {
     console.log('render')
   }, [])
   return (
-    <>
+    <Flex flexDirection="column" flex={1} overflow="hidden" height="100vh">
       <Flex
         background="#171c26"
         width="100%"
@@ -19,9 +21,12 @@ export const CoreLayout = (props: BoxProps) => {
         color="#fff"
         paddingX="20px"
         justifyContent="space-between"
+        zIndex={100}
       >
-        <Flex gap="20px">
-          <Box>Logo</Box>
+        <Flex gap="20px" alignItems="center">
+          <Link href="/">
+            <Image src="/images/logo.png" alt="logo" width={58} height={50} />
+          </Link>
           <Flex gap="15px">
             <Link href="/games">Games</Link>
             <Link href="/spaces">Spaces</Link>
@@ -46,9 +51,12 @@ export const CoreLayout = (props: BoxProps) => {
           >
             SIGN UP
           </Button>
+          <Button onClick={toggleColorMode}>
+            Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+          </Button>
         </Flex>
       </Flex>
-      <Flex minH="100vh">
+      <Flex overflow="hidden" flex={1}>
         <Flex
           flexDirection="column"
           background="#0e121b"
@@ -62,8 +70,10 @@ export const CoreLayout = (props: BoxProps) => {
           <Box>item</Box>
           <Box>item</Box>
         </Flex>
-        <Box flex={1}>{children}</Box>
+        <Flex flex={1} flexDirection="column">
+          {children}
+        </Flex>
       </Flex>
-    </>
+    </Flex>
   )
 }

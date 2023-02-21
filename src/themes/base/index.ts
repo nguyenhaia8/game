@@ -42,4 +42,6 @@ export const baseTheme = extendTheme({
     Textarea,
     Input,
   },
+  initialColorMode: 'light',
+  useSystemColorMode: false,
 })

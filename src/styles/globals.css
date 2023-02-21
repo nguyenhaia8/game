@@ -105,3 +105,9 @@ a {
     color-scheme: dark;
   }
 }
+
+#__next {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
